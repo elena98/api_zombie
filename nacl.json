@@ -1,0 +1,62 @@
+[{"group": "invitado",
+    "permissions": [{
+        "resource": "login",
+        "methods": ["GET","POST","PUT"],
+        "action": "allow"
+    },
+    {
+        "resource": "signup",
+        "methods": ["GET", "POST","PUT"],
+        "action": "allow"
+    }]
+    
+    },
+    {"group": "Zombie-quen",
+        "permissions": [{
+            "resource": "login",
+            "methods": ["GET","POST","PUT"],
+            "action": "allow"
+        },
+        {
+            "resource": "signup",
+            "methods": ["GET", "POST","PUT"],
+            "action": "allow"
+        }]
+        
+    },
+    {"group": "Zombie-solder",
+        "permissions": [{
+            "resource": "login",
+            "methods": ["GET","POST","PUT"],
+            "action": "allow"
+        },
+        {
+            "resource": "armas",
+            "methods": ["GET", "POST","PUT"],
+            "action": "allow"
+        }]
+        
+    },
+    {"group": "Zombie-king",
+        "permissions": [{
+            "resource": "login",
+            "methods": ["GET","POST","PUT"],
+            "action": "allow"
+        },
+        {
+            "resource": "armas",
+            "methods": ["GET", "POST","PUT"],
+            "action": "allow"
+        },
+        {
+            "resource": "signup",
+            "methods": ["GET", "POST","PUT"],
+            "action": "allow"
+        }
+    ]
+        
+    }
+    
+    
+    
+    ]
