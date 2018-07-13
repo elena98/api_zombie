@@ -1,18 +1,18 @@
 <%include _header%>
 <h1>Galeria de Armas.</h1>
 
-<% Armas.forEach((arma)=>{%>
+<% armas.forEach((arma)=>{%>
     <div class="panel panel-default">
         <div class="panel-heading">
             <a href="/arma/<%= arma.descripcion %>"><%= arma.descripcion%></a>
         </div>
         <% if(arma.categoria){%>
         <div class="panel-body">
-            <%= arma.categoria%>
+           Categoria:, <%= arma.categoria%>
             <br>
-            <%= arma.fuerza%>
+           Arma: ,<%= arma.fuerza%>
             <br>
-            <%= arma.municiones%>
+           Municiones:, <%= arma.municiones%>
             <br>
         </div>
         <%}%>

@@ -12,16 +12,17 @@ acl.config({
     decodedObjectName:'zombie',
     roleSearchPath:'zombie.role'
 })
-router.use(acl.authorize);
+
 
 router.use((req,res,next)=>{
     res.locals.currentZombie = req.zombie;
     res.locals.errors=req.flash("error");
     res.locals.infos = req.flash("info");
-    next();
     if(req.isAuthenticated()){
         req.session.role = req.zombie.role;
     }
+    console.log(req.session);
+    next();
 });
 router.use(acl.authorize);
 
@@ -52,7 +53,7 @@ router.get("/logout",(req, res) =>{
 });
 
 
-router.get("/arma",(req,res,next)=>{
+router.get("/armas",(req,res,next)=>{
     Arma.find()
     .sort({createdAt: "descending"})
     .exec((err,armas)=>{
@@ -76,10 +77,27 @@ router.get("/add",(req,res)=>{
 router.get("/singup",(req,res)=>{
     res.render("singup");
 });
+router.get("/edit",(req,res)=>{
+    res.render("edit");
+});
+
+router.post("/edit",ensureAuthenticated,(req,res,next)=>{
+    req.zombie.displayName=req.body.displayName;
+    req.zombie.bio=req.body.bio;
+    req.zombie.save((err)=>{
+        if(err){
+            next(err);
+            return;
+        }
+        req.flash("info","Perfil actualizado!");
+        res.redirect("/edit");
+    });
+});
 
 router.post("/singup",(req,res,next)=>{
     var username = req.body.username;
     var password = req.body.password;
+    var role = req.body.role;
 
     Zombie.findOne({username:username}, function(err,zombie){
         if(err){
@@ -91,7 +109,8 @@ router.post("/singup",(req,res,next)=>{
         }
         var newZombie = new Zombie({
             username:username,
-            password:password
+            password:password,
+            role:role
         });
         newZombie.save(next);
         return res.redirect("/");

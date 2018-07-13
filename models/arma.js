@@ -1,4 +1,4 @@
-
+var bcrypt = require("bcrypt-nodejs");
 var mongoose = require("mongoose");
 var armasSchema = mongoose.Schema({
     descripcion:{type: String,require:true},
@@ -7,5 +7,5 @@ var armasSchema = mongoose.Schema({
     municiones:{type:Boolean,require:true}
 });
 
-var Armas= mongoose.model("Arma",armasSchema);
-module.exports = Armas;
+var Arma= mongoose.model("Arma",armasSchema);
+module.exports = Arma;

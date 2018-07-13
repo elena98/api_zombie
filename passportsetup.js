@@ -8,7 +8,7 @@ module.exports =() =>{
         done(null,zombie._id);
     });
     passport.deserializeUser((id,done) =>{
-        Zombie.findByld(id,(err,zombie) =>{
+        Zombie.findById(id,(err,zombie) =>{
             done(err,zombie);
         });
     });
